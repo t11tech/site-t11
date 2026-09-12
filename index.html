@@ -8,308 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0E0B14;
-    --surface: #17131F;
-    --surface-2: #1F1A2B;
-    --line: #2E2740;
-    --text: #EDEAF2;
-    --muted: #9C93AD;
-    --purple: #8B5CF6;
-    --purple-dim: #6D45C4;
-    --purple-glow: rgba(139,92,246,0.18);
-  }
-  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3, .brand-name{font-family:'Space Grotesk', sans-serif;}
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  .wrap{max-width:1040px; margin:0 auto; padding:0 24px;}
-
-  /* header */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(14,11,20,0.88);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .header-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 24px;
-    max-width:1040px; margin:0 auto;
-  }
-  .brand{display:flex; align-items:center; gap:10px;}
-  .brand img{height:38px; width:38px; border-radius:8px;}
-  .brand-name{font-size:17px; font-weight:600; letter-spacing:-0.01em;}
-  .header-cta{
-    background:var(--purple);
-    color:#0E0B14;
-    font-weight:600;
-    font-size:14px;
-    padding:10px 18px;
-    border-radius:8px;
-    transition:transform .15s ease, background .15s ease;
-  }
-  .header-cta:hover{background:#a17df8; transform:translateY(-1px);}
-
-  .subnav{
-    border-bottom:1px solid var(--line);
-    background:var(--bg);
-  }
-  .subnav-inner{
-    display:flex; gap:6px;
-    overflow-x:auto;
-    padding:10px 24px;
-    max-width:1040px; margin:0 auto;
-    scrollbar-width:none;
-  }
-  .subnav-inner::-webkit-scrollbar{display:none;}
-  .subnav a{
-    flex-shrink:0;
-    font-size:13.5px;
-    color:var(--muted);
-    padding:7px 14px;
-    border-radius:999px;
-    border:1px solid var(--line);
-    white-space:nowrap;
-    transition:color .15s ease, border-color .15s ease, background .15s ease;
-  }
-  .subnav a:hover, .subnav a:active{
-    color:var(--text);
-    border-color:var(--purple-dim);
-    background:var(--surface);
-  }
-
-  /* hero */
-  .hero{padding:80px 0 64px; position:relative; overflow:hidden;}
-  .hero::before{
-    content:"";
-    position:absolute; top:-140px; right:-180px;
-    width:520px; height:520px;
-    background:radial-gradient(circle, var(--purple-glow) 0%, rgba(139,92,246,0) 70%);
-    pointer-events:none;
-  }
-  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
-  .eyebrow-line{
-    display:flex; align-items:center; gap:10px;
-    color:var(--purple); font-size:14px; font-weight:500; margin-bottom:18px;
-  }
-  .eyebrow-line .dot{
-    width:8px; height:8px; border-radius:50%;
-    background:var(--purple);
-    box-shadow:0 0 0 4px var(--purple-glow);
-  }
-  h1{font-size:42px; line-height:1.14; font-weight:700; letter-spacing:-0.015em; margin-bottom:20px;}
-  .hero p.lead{font-size:17px; color:var(--muted); max-width:460px; margin-bottom:32px;}
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
-  .btn-primary{
-    display:inline-flex; align-items:center; gap:10px;
-    background:var(--purple); color:#0E0B14; font-weight:600; font-size:16px;
-    padding:15px 26px; border-radius:10px;
-    transition:transform .15s ease, background .15s ease;
-  }
-  .btn-primary:hover{background:#a17df8; transform:translateY(-1px);}
-  .cta-note{font-size:13px; color:var(--muted);}
-
-  .logo-card{
-    position:relative;
-    background:radial-gradient(circle at 50% 30%, #1B1428 0%, #0E0B14 75%);
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:36px;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .logo-card img{width:100%; max-width:380px;}
-
-  /* sections */
-  section{padding:60px 0;}
-  .section-head{max-width:540px; margin-bottom:36px;}
-  .section-head h2{font-size:28px; font-weight:700; letter-spacing:-0.01em; margin-bottom:10px;}
-  .section-head p{color:var(--muted); font-size:15px;}
-
-  /* como funciona */
-  .steps{
-    display:grid; grid-template-columns:repeat(3, 1fr);
-    border:1px solid var(--line); border-radius:16px; overflow:hidden;
-  }
-  .step{padding:26px 22px; border-right:1px solid var(--line); background:var(--surface);}
-  .step:last-child{border-right:none;}
-  .step .num{font-family:'Space Grotesk', sans-serif; font-size:13px; color:var(--purple); font-weight:600; margin-bottom:14px;}
-  .step h3{font-size:16px; margin-bottom:8px; font-weight:600;}
-  .step p{font-size:13.5px; color:var(--muted);}
-
-  /* diagnóstico callout */
-  .diag-callout{
-    background:var(--surface-2);
-    border:1px solid var(--purple-dim);
-    border-radius:16px;
-    padding:24px 28px;
-    margin-top:22px;
-    display:flex;
-    gap:18px;
-    align-items:flex-start;
-  }
-  .diag-callout .icon{
-    flex-shrink:0;
-    width:38px; height:38px;
-    border-radius:10px;
-    background:var(--purple-glow);
-    display:flex; align-items:center; justify-content:center;
-    color:var(--purple);
-    font-weight:700;
-    font-family:'Space Grotesk', sans-serif;
-  }
-  .diag-callout h3{font-size:15.5px; margin-bottom:6px; font-weight:600;}
-  .diag-callout p{font-size:14px; color:var(--muted);}
-
-  /* diagnóstico técnico */
-  .diag-panel{
-    border:1px solid var(--line);
-    border-radius:16px;
-    background:var(--surface);
-    padding:26px 28px;
-  }
-  .diag-panel .diag-lead{
-    font-size:14.5px; color:var(--muted); margin-bottom:18px;
-  }
-  .diag-panel .diag-lead b{color:var(--text); font-weight:600;}
-  .diag-outcomes{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
-  .diag-outcome h3{font-size:15px; font-weight:600; margin-bottom:6px;}
-  .diag-outcome p{font-size:13.5px; color:var(--muted);}
-
-  /* preços */
-  .price-table{
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
-  }
-  .price-row{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:18px 24px;
-    background:var(--surface);
-    border-bottom:1px solid var(--line);
-  }
-  .price-row:last-child{border-bottom:none;}
-  .price-row .name{font-size:15px; font-weight:500;}
-  .price-row .desc{font-size:13px; color:var(--muted); margin-top:2px;}
-  .price-row .value{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:17px; font-weight:600; color:var(--purple);
-    white-space:nowrap; padding-left:20px;
-  }
-
-  /* diferenciais */
-  .diff-band{background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .diff-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;}
-  .diff-item .figure{font-family:'Space Grotesk', sans-serif; font-size:15px; color:var(--purple); font-weight:600; margin-bottom:8px;}
-  .diff-item h3{font-size:16px; font-weight:600; margin-bottom:6px;}
-  .diff-item p{font-size:13.5px; color:var(--muted);}
-
-  /* local */
-  .local-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:stretch;}
-  .local-info{
-    background:var(--surface); border:1px solid var(--line); border-radius:16px;
-    padding:28px; display:flex; flex-direction:column; justify-content:space-between;
-  }
-  .local-info .badge{
-    display:inline-block; font-size:12.5px; color:var(--purple);
-    border:1px solid var(--purple-dim); padding:5px 10px; border-radius:999px;
-    margin-bottom:16px; width:fit-content;
-  }
-  .local-info h3{font-size:19px; margin-bottom:10px; font-weight:600;}
-  .local-info p{font-size:14px; color:var(--muted); margin-bottom:6px;}
-  .local-info .addr{color:var(--text); font-weight:500; margin-top:14px;}
-  .map-frame{border-radius:16px; overflow:hidden; border:1px solid var(--line); min-height:280px; position:relative;}
-  .map-frame iframe{width:100%; height:100%; min-height:280px; border:0; filter:grayscale(0.3) contrast(1.05) brightness(0.95); pointer-events:none;}
-  .map-frame.active iframe{pointer-events:auto;}
-  .map-frame .map-hint{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    background:rgba(14,11,20,0.35);
-    color:var(--text);
-    font-size:13.5px;
-    text-align:center;
-    padding:16px;
-    transition:opacity .2s ease;
-  }
-  .map-frame.active .map-hint{opacity:0; pointer-events:none;}
-
-  /* final cta */
-  .final-cta{text-align:center; padding:76px 0 92px;}
-  .final-cta h2{font-size:30px; font-weight:700; margin-bottom:14px; letter-spacing:-0.01em;}
-  .final-cta p{color:var(--muted); margin-bottom:28px;}
-
-  footer{border-top:1px solid var(--line); padding:26px 0;}
-  .footer-inner{
-    display:flex; justify-content:space-between; align-items:center;
-    font-size:13px; color:var(--muted); flex-wrap:wrap; gap:10px;
-  }
-
-  .float-wpp{
-    position:fixed; bottom:22px; right:22px; z-index:100;
-    background:#25D366; color:#0b2b16;
-    width:58px; height:58px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 8px 24px rgba(0,0,0,0.4);
-    transition:transform .15s ease;
-  }
-  .float-wpp:hover{transform:scale(1.06);}
-  .float-wpp svg{width:28px; height:28px;}
-
-  @media (max-width:820px){
-    .wrap{padding:0 20px;}
-    section{padding:48px 0;}
-    .hero{padding:52px 0 44px;}
-    .hero-grid{grid-template-columns:1fr; gap:36px;}
-    .hero-grid .logo-card{order:-1; max-width:280px; margin:0 auto;}
-    .logo-card{padding:24px;}
-    .steps{grid-template-columns:1fr;}
-    .step{border-right:none; border-bottom:1px solid var(--line);}
-    .step:last-child{border-bottom:none;}
-    .diag-panel{padding:22px 20px;}
-    .diag-outcomes{grid-template-columns:1fr; gap:16px;}
-    .diff-grid{grid-template-columns:1fr; gap:24px;}
-    .local-grid{grid-template-columns:1fr;}
-    .local-info{padding:22px;}
-    .price-row{flex-direction:column; align-items:flex-start; gap:4px; padding:16px 18px;}
-    .price-row .value{padding-left:0;}
-    .section-head{margin-bottom:28px;}
-    .final-cta{padding:56px 0 64px;}
-    h1{font-size:30px;}
-    .section-head h2{font-size:24px;}
-  }
-  @media (max-width:520px){
-    .header-cta{display:none;}
-    .brand-name{font-size:16px;}
-    h1{font-size:27px;}
-    .hero p.lead{font-size:15.5px;}
-    .cta-row{flex-direction:column; align-items:stretch; gap:12px;}
-    .cta-row .btn-primary{justify-content:center; width:100%;}
-    .cta-note{text-align:center;}
-    .final-cta .btn-primary{width:100%; justify-content:center;}
-    .final-cta h2{font-size:24px;}
-    .local-info .btn-primary{width:100%;}
-    .footer-inner{flex-direction:column; align-items:flex-start; gap:6px;}
-    .float-wpp{width:52px; height:52px; bottom:16px; right:16px;}
-    .float-wpp svg{width:25px; height:25px;}
-  }
-  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <div class="header-inner">
     <div class="brand">
-      <img src="t11-logo.png" alt="T11 Tech">
+      <img src="t11-logo.webp" alt="T11 Tech">
       <span class="brand-name">T11 Tech</span>
     </div>
     <a class="header-cta" href="https://wa.me/554197662083?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20T11%20Tech%20e%20quero%20marcar%20um%20atendimento" target="_blank" rel="noopener">Chamar no WhatsApp</a>
@@ -321,29 +27,82 @@
       <a href="#servicos">Serviços e valores</a>
       <a href="#local">Localização</a>
     </div>
+    <div class="subnav-fade" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
   </nav>
 </header>
 
 <main>
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow-line"><span class="dot"></span>Manutenção de computador em Curitiba</div>
-        <h1>Seu PC lento, travando ou com defeito?<br>Resolve com quem entende.</h1>
-        <p class="lead">Formatação, limpeza interna, troca de peças e montagem, com hora marcada e orçamento fechado antes de qualquer serviço.</p>
-        <div class="cta-row">
-          <a class="btn-primary" href="https://wa.me/554197662083?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20T11%20Tech%20e%20quero%20marcar%20um%20atendimento" target="_blank" rel="noopener">
-            Chamar no WhatsApp
-          </a>
+      <div class="hero-copy">
+        <div class="hero-overlay-text">
+          <h1>Seu PC está lento, travando ou com defeito?<br>Resolva com quem entende.</h1>
+        </div>
+        <div class="hero-below">
+          <p class="lead">Formatação, limpeza interna, troca de peças e montagem entre muito mais com hora marcada e orçamento fechado antes de iniciar qualquer serviço.</p>
+          <div class="cta-row">
+            <a class="btn-primary" href="https://wa.me/554197662083?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20T11%20Tech%20e%20quero%20marcar%20um%20atendimento" target="_blank" rel="noopener">
+              Chamar no WhatsApp
+            </a>
+          </div>
         </div>
       </div>
-      <div class="logo-card">
-        <img src="t11-logo.png" alt="Logo T11 Tech">
+      <div class="carousel" id="heroCarousel">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="imagens/limpeza.webp" alt="Limpeza">
+            <span class="carousel-caption">Limpeza profissional para evitar superaquecimentos</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="imagens/ramnote.webp" alt="Instalação de memória em notebook">
+            <span class="carousel-caption">Upgrades necessários para maior desempenho</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="imagens/acer.webp" alt="Instalação do Windows">
+            <span class="carousel-caption">Seu computador pronto pra rodar</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="imagens/phenom.webp" alt="Encaixe do processador na placa-mãe">
+            <span class="carousel-caption">Precisão máxima em cada peça instalada</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="imagens/parafuso.webp" alt="Parafusando componente no gabinete">
+            <span class="carousel-caption">Montagem profissional com acabamento pefeito</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="imagens/ramdesk.webp" alt="Instalação de memória RAM em desktop">
+            <span class="carousel-caption">Manuseio das peças feito com cuidado</span>
+          </div>
+          <div class="carousel-slide">
+            <img src="imagens/parafusonote.webp" alt="parafuso notebook">
+            <span class="carousel-caption">Deixamos seu equipamento como novo</span>
+          </div>
+        </div>
+        <button class="carousel-arrow prev" type="button" aria-label="Imagem anterior">&#8249;</button>
+        <button class="carousel-arrow next" type="button" aria-label="Próxima imagem">&#8250;</button>
+        <div class="carousel-dots">
+          <button class="dot active" data-index="0" aria-label="Imagem 1"></button>
+          <button class="dot" data-index="1" aria-label="Imagem 2"></button>
+          <button class="dot" data-index="2" aria-label="Imagem 3"></button>
+          <button class="dot" data-index="3" aria-label="Imagem 4"></button>
+          <button class="dot" data-index="4" aria-label="Imagem 5"></button>
+          <button class="dot" data-index="5" aria-label="Imagem 6"></button>
+          <button class="dot" data-index="6" aria-label="Imagem 7"></button>
+        </div>
       </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </section>
 
-  <section id="como-funciona">
+  <section id="como-funciona" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2>Como funciona o atendimento</h2>
@@ -377,7 +136,7 @@
     </div>
   </section>
 
-  <section id="diagnostico">
+  <section id="diagnostico" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2>Diagnóstico Técnico</h2>
@@ -414,11 +173,11 @@
     </div>
   </section>
 
-  <section id="servicos">
+  <section id="servicos" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2>Serviços e valores</h2>
-        <p>Valores de referência. O orçamento final é confirmado no WhatsApp.</p>
+        <p>Esses são os serviços mais pedidos. Fazemos outros também, é só chamar no WhatsApp e explicar o que você precisa.</p>
       </div>
       <div class="price-table">
         <div class="price-row">
@@ -449,8 +208,15 @@
         <div class="price-row">
           <div>
             <div class="name">Instalação de peças</div>
+            <div class="desc">Com peças que você já tem</div>
           </div>
           <div class="value">a partir de R$ 20</div>
+        </div>
+        <div class="price-row">
+          <div>
+            <div class="name">Backup e restauração de dados</div>
+          </div>
+          <div class="value">a partir de R$ 50</div>
         </div>
         <div class="price-row">
           <div>
@@ -459,12 +225,18 @@
           </div>
           <div class="value">a partir de R$ 40</div>
         </div>
+        <div class="price-row">
+          <div>
+            <div class="name">E mais!</div>
+            <div class="desc">Chame no Whatsapp e explique o que precisa.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="diff-band">
-    <section>
+    <section class="reveal">
       <div class="wrap">
         <div class="section-head">
           <h2>Por que chamar a T11 Tech</h2>
@@ -477,8 +249,8 @@
           </div>
           <div class="diff-item">
             <div class="figure">Profissionalismo</div>
-            <h3>Serviço com responsabilidade</h3>
-            <p>Seu equipamento é tratado com cuidado e o serviço é realizado de forma organizada e transparente.</p>
+            <h3>Garantia de 90 dias</h3>
+            <p>Serviço com total tranquilidade. Garantimos 90 dias sobre a mão de obra de manutenção, montagem e formatação.</p>
           </div>
           <div class="diff-item">
             <div class="figure">Ordem de serviço</div>
@@ -490,7 +262,7 @@
     </section>
   </div>
 
-  <section id="local">
+  <section id="local" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2>Onde fica o atendimento</h2>
@@ -520,10 +292,15 @@
     </div>
   </section>
 
-  <section class="final-cta">
+  <section class="final-cta reveal">
+  <div style="display: flex; justify-content: center;">
+    <img src="t11-logo.webp" alt="T11 Tech" style="width: 300px; margin-top: -100px;">
+</div>
+
+
     <div class="wrap">
       <h2>Bora resolver o seu PC?</h2>
-      <p>Manda uma mensagem agora e já recebe o orçamento.</p>
+      <p>Manda uma mensagem e explique o que precisa. Responderemos o mais rápido possível.</p>
       <a class="btn-primary" href="https://wa.me/554197662083?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20T11%20Tech%20e%20quero%20marcar%20um%20atendimento" target="_blank" rel="noopener">
         Chamar no WhatsApp
       </a>
@@ -544,6 +321,6 @@
     <path d="M17 14.3c-.28-.14-1.63-.8-1.88-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.43-2.24-1.37-.83-.73-1.38-1.64-1.55-1.92-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.48-.85-2.03-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.46.07-.71.35-.25.28-.94.9-.94 2.2s.96 2.55 1.1 2.73c.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.7.1.52-.08 1.63-.66 1.86-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.53-.32Z" fill="#F4FFF6"/>
   </svg>
 </a>
-
+  <script src="script.js"></script>
 </body>
 </html>
