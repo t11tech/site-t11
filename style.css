@@ -347,6 +347,20 @@
   .final-cta p{color:var(--muted); margin-bottom:28px;}
 
   footer{border-top:1px solid var(--line); padding:26px 0;}
+  .footer-social{
+    display:flex; flex-wrap:wrap;
+    justify-content:center;
+    gap:22px;
+    margin-bottom:18px;
+  }
+  .footer-social a{
+    display:flex; align-items:center; gap:7px;
+    color:var(--muted);
+    font-size:13.5px;
+    transition:color .15s ease;
+  }
+  .footer-social a:hover{color:var(--purple);}
+  .footer-social svg{width:17px; height:17px; flex-shrink:0;}
   .footer-inner{
     display:flex; justify-content:space-between; align-items:center;
     font-size:13px; color:var(--muted); flex-wrap:wrap; gap:10px;
