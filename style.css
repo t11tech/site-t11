@@ -4,7 +4,7 @@
     --surface-2: #1F1A2B;
     --line: #2E2740;
     --text: #EDEAF2;
-    --muted: #9C93AD;
+    --muted: #b7afc5;
     --purple: #8B5CF6;
     --purple-dim: #6D45C4;
     --purple-glow: rgba(139,92,246,0.18);
@@ -36,7 +36,7 @@
     max-width:1040px; margin:0 auto;
   }
   .brand{display:flex; align-items:center; gap:10px;}
-  .brand img{height:38px; width:38px; border-radius:8px;}
+  .brand img{height:38px; width:auto; border-radius:8px;}
   .brand-name{font-size:17px; font-weight:600; letter-spacing:-0.01em;}
   .header-cta{
     background:var(--purple);
